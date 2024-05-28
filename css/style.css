@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-color: rgb(28, 28, 28);
+  --bg-section: rgb(247, 247, 247);
+  --p-color: rgb(116, 129, 130);
+  --h-color: rgb(52, 52, 52);
+  --bx: 0 0 10px var(--main-color);
+  --tr: all 0.6s;
+}
+body {
+  font-family: "PT Sans Caption", sans-serif;
+  background-color: #f7ecde;
+}
+a,
+span {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+/* ?------------------ start component*/
+.btn-main {
+  padding: 7px 14px;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  font-size: 20px;
+  &:hover {
+    background-color: var(--bg-hover);
+    color: white;
+    box-shadow: 0 0 10px var(--main-color);
+  }
+}
+/* ?------------------ end component*/
+/* ! */
+h1 {
+  font-family: "Pacifico", cursive;
+  width: fit-content;
+  font-size: 50px;
+  color: rgb(53, 46, 40);
+  margin: 70px auto;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    bottom: 0;
+    left: 0;
+    background-color: #fec260;
+    z-index: -1;
+    transition: all 0.6s;
+  }
+  &:hover::after {
+    height: 65%;
+  }
+}
+.dotes {
+  border-bottom: 2px dotted black;
+}
+h2 {
+  font-family: "Righteous", sans-serif;
+  margin: 20px auto;
+  font-size: 35px;
+  width: fit-content;
+  color: transparent;
+  -webkit-text-stroke: 0.5px #3ca55c;
+  background-clip: text;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, #3ca55c, #b5ac49);
+  background-position: -600px 0;
+  animation: animateText 4s infinite linear;
+}
+@keyframes animateText {
+  0%,
+  95%,
+  100% {
+    background-position: -600px 0;
+  }
+  50%,
+  85% {
+    background-position: 0 0;
+  }
+}
+.form {
+  .btn-add {
+    background-color: #3ca55c;
+    color: white;
+    transition: all 0.6s;
+    &:hover {
+      box-shadow: 0 0 10px #3ca55c;
+    }
+  }
+}
+.btn-visit {
+  background-color: #9eb23b;
+  color: white;
+  &:hover {
+    background-color: #8a9e23;
+    color: white;
+  }
+}
+.circles span:nth-child(1) {
+  background-color: #f15f5d;
+}
+.circles span:nth-child(2) {
+  background-color: #febe2e;
+}
+.circles span:nth-child(3) {
+  background-color: #4db748;
+}
+
+.circles span {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+/* ! */
