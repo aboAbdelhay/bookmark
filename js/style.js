@@ -52,7 +52,56 @@ function display(arr) {
           </tr>
     `;
   }
+  $("#bookmarkTable").DataTable().clear().destroy();
   document.querySelector("#tableBody").innerHTML = tr;
+  $("#bookmarkTable").DataTable({
+    responsive: {
+      details: {
+        renderer: function (api, rowIdx, columns) {
+          var data = $.map(columns, function (col, i) {
+            return col.hidden
+              ? '<tr data-dt-row="' +
+                  col.rowIndex +
+                  '" data-dt-column="' +
+                  col.columnIndex +
+                  '">' +
+                  "<td>" +
+                  col.title +
+                  ":" +
+                  "</td> " +
+                  "<td>" +
+                  col.data +
+                  "</td>" +
+                  "</tr>"
+              : "";
+          }).join("");
+
+          data += `
+            <tr>
+              <td colspan="2">
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-danger btn-delete" onclick="deleteRow(${rowIdx})">
+                    <i class="fa-solid fa-trash-can pe-2"></i> Delete
+                  </button><button class="btn btn-primary btn-update" onclick="upDateInput(${rowIdx})">
+                  <i class="fa-solid fa-edit pe-2"></i> Update
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+
+          return data ? $("<table/>").append(data) : false;
+        },
+      },
+    },
+    columnDefs: [
+      {
+        targets: -1,
+        orderable: false,
+        className: "actions-column",
+      },
+    ],
+  });
 }
 
 function clearInputs() {
@@ -73,14 +122,17 @@ function validationInput(index) {
   if (index.value == "") {
     index.classList.remove("is-valid");
     index.classList.remove("is-invalid");
+    index.classList.add("inputShadow");
     return false;
   } else if (validation[index.id].test(index.value)) {
     index.classList.add("is-valid");
     index.classList.remove("is-invalid");
+    index.classList.remove("inputShadow");
     return true;
   } else {
     index.classList.remove("is-valid");
     index.classList.add("is-invalid");
+    index.classList.remove("inputShadow");
     return false;
   }
 }

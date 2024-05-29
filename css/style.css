@@ -122,4 +122,8 @@ h2 {
   width: 20px;
   height: 20px;
 }
+.inputShadow:focus {
+  box-shadow: 0 0 10px #febe2e !important;
+  border:2px solid #febe2e !important;
+}
 /* ! */
