@@ -75,21 +75,6 @@ function display(arr) {
                   "</tr>"
               : "";
           }).join("");
-
-          data += `
-            <tr>
-              <td colspan="2">
-                <div class="d-flex justify-content-center">
-                  <button class="btn btn-danger btn-delete" onclick="deleteRow(${rowIdx})">
-                    <i class="fa-solid fa-trash-can pe-2"></i> Delete
-                  </button><button class="btn btn-primary btn-update" onclick="upDateInput(${rowIdx})">
-                  <i class="fa-solid fa-edit pe-2"></i> Update
-                </button>
-              </div>
-            </td>
-          </tr>
-        `;
-
           return data ? $("<table/>").append(data) : false;
         },
       },
